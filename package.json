@@ -3,9 +3,10 @@
   "version": "2.0.0",
   "description": "Azan Watch - prayer times, Hijri/Shamsi dates and azan alerts (مفتی شعیب خان آلائی)",
   "main": "main.js",
- "author": {
+"author": {
   "name": "Mufti Shuaib Khan Alai",
-  "email": "your-email@example.com"
+  "email": "sjsnza123@gmail.com"
+},
 },
   "scripts": {
     "start": "electron .",
