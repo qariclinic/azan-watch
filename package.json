@@ -1,8 +1,7 @@
-cat > package.json << 'EOF'
 {
   "name": "azan-watch-electron",
   "version": "2.0.0",
-  "description": "Azan Watch - prayer times, Hijri/Shamsi dates and azan alerts (مفتی شعیب خان آلائی)",
+  "description": "Azan Watch",
   "main": "main.js",
   "author": {
     "name": "Mufti Shuaib Khan Alai",
@@ -29,4 +28,3 @@ cat > package.json << 'EOF'
     "nsis": {"oneClick": false, "allowToChangeInstallationDirectory": true}
   }
 }
-EOF
