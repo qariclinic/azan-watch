@@ -1,0 +1,30 @@
+name: Build Android TWA (bubblewrap)
+# پہلے سائٹ HTTPS پر ہوسٹ کریں، پھر Actions میں "Run workflow" دبائیں اور site_url دیں۔
+on:
+  workflow_dispatch:
+    inputs:
+      site_url:
+        description: 'HTTPS base URL where manifest.json is hosted (e.g. https://example.com/azan)'
+        required: true
+jobs:
+  build-twa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - name: Install bubblewrap
+        run: npm install -g @bubblewrap/cli
+      - name: Init and build
+        run: |
+          mkdir twa-output && cd twa-output
+          bubblewrap init --manifest="${{ github.event.inputs.site_url }}/manifest.json" --directory=. <<< $'\n'
+          bubblewrap build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: twa-output
+          path: |
+            twa-output/*.apk
+            twa-output/*.aab
